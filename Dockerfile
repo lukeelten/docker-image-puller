@@ -1,5 +1,5 @@
 FROM python:alpine
-MAINTAINER Kévin Darcel <kevin.darcel@gmail.com>
+LABEL authors="Kévin Darcel <kevin.darcel@gmail.com>, Tobias Derksen <t.derksen@gmx.de>"  
 
 WORKDIR /usr/src/docker-image-updater
 

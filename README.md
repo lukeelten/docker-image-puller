@@ -1,8 +1,7 @@
 Docker Image Puller
 ===================
 
-[![](https://images.microbadger.com/badges/version/tuxity/docker-image-puller.svg)](https://hub.docker.com/r/tuxity/docker-image-puller/)
-![](https://images.microbadger.com/badges/image/tuxity/docker-image-puller.svg)
+This project has been forked from [tuxity/docker-image-puller](https://github.com/tuxity/docker-image-puller)
 
 ## Overview
 
@@ -25,9 +24,10 @@ docker run -d \
   --env TOKEN=abcd4242 \
   --env REGISTRY_USER=roberto \
   --env REGISTRY_PASSWD=robertopwd \
+  --env REDIS=10.0.0.1
   -p 8080:8080 \
   -v /var/run/docker.sock:/var/run/docker.sock \
-  tuxity/docker-image-puller
+  lukeelten/image-puller
 ```
 
 Available env variable:
@@ -36,6 +36,7 @@ TOKEN*
 REGISTRY_USER
 REGISTRY_PASSWD
 REGISTRY_URL (default: https://index.docker.io/v1/)
+REDIS
 HOST (default: 0.0.0.0)
 PORT (default: 8080)
 DEBUG (default: False)
