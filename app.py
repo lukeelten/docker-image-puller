@@ -77,8 +77,9 @@ def image_puller():
 
     print('\tFlushing Redis cache...')
     redis_host = os.environ("REDIS")
-    server = redis.Redis(redis_host)
-    redis.flushall();
+    if redis_host:
+        server = redis.Redis(redis_host)
+        redis.flushall();
 
     return jsonify(success=True), 200
 
