@@ -4,6 +4,7 @@
 import os, sys
 import click
 import re
+import redis
 
 from flask import Flask
 from flask import request
@@ -73,6 +74,11 @@ def image_puller():
     print ('\tRemoving old containers...')
     for cont in old_containers:
         docker.remove_container(container=cont['Id'])
+
+    print('\tFlushing Redis cache...')
+    redis_host = os.environ("REDIS")
+    server = redis.Redis(redis_host)
+    redis.flushall();
 
     return jsonify(success=True), 200
 
