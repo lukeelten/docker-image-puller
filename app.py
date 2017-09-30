@@ -76,7 +76,7 @@ def image_puller():
         docker.remove_container(container=cont['Id'])
 
     print('\tFlushing Redis cache...')
-    redis_host = os.environ("REDIS")
+    redis_host = os.environ.get("REDIS")
     if redis_host:
         server = redis.Redis(redis_host)
         redis.flushall();
