@@ -79,7 +79,7 @@ def image_puller():
     redis_host = os.environ.get("REDIS")
     if redis_host:
         server = redis.Redis(redis_host)
-        redis.flushall();
+        server.flushall();
 
     return jsonify(success=True), 200
 
