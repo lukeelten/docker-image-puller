@@ -49,9 +49,13 @@ def image_puller():
     image_tag  = image[1] if len(image) == 2 else 'latest'
 
     print ('\tPulling new image...')
-    docker.pull(image_name, tag=image_tag)
+    old_image = docker.get(image_name)
+    new_image = docker.pull(image_name, tag=image_tag)
 
     if restart_containers is False:
+        return jsonify(success=True), 200
+
+    if old_image.short_id == new_image.short_id:
         return jsonify(success=True), 200
 
     print ('\tCreating new containers...')
